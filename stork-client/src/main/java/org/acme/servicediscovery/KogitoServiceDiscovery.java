@@ -22,8 +22,14 @@ public class KogitoServiceDiscovery implements ServiceDiscovery {
         // Proceed to the lookup...
         // Here, we just return a DefaultServiceInstance with the configured host and port
         // The last parameter specifies whether the communication with the instance should happen over a secure connection
+
+        // Service
+//        DefaultServiceInstance instance =
+//                new DefaultServiceInstance(ServiceInstanceIds.next(), "knative-serving-quarkus-demo.default.10.110.137.209.sslip.io", 80, false);
+
+        // Pod
         DefaultServiceInstance instance =
-                new DefaultServiceInstance(ServiceInstanceIds.next(), "knative-serving-quarkus-demo.default.10.110.137.209.sslip.io", 80, false);
+                new DefaultServiceInstance(ServiceInstanceIds.next(), "172.17.0.23", 8080, false);
 
         return Uni.createFrom().item(() -> Collections.singletonList(instance));
     }
